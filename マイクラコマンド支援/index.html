@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master of Command: Minecraft Learning</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-layout">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo-area">
+                <div class="logo-icon cmd-block-impulse"></div>
+                <h1>M.o.C.</h1>
+            </div>
+
+            <div class="nav-items">
+                <button class="nav-item active" onclick="app.switchTab('map')" data-tab="map">
+                    <span class="icon">🗺️</span>
+                    <span class="label">Learning Map</span>
+                </button>
+                <button class="nav-item" onclick="app.switchTab('workshop')" data-tab="workshop">
+                    <span class="icon">⚒️</span>
+                    <span class="label">Workshop</span>
+                </button>
+                <button class="nav-item" onclick="app.switchTab('reference')" data-tab="reference">
+                    <span class="icon">📚</span>
+                    <span class="label">Reference</span>
+                </button>
+                <button class="nav-item" onclick="app.switchTab('tools')" data-tab="tools">
+                    <span class="icon">🧰</span>
+                    <span class="label">Tools</span>
+                </button>
+                <button class="nav-item" onclick="app.switchTab('iddict')" data-tab="iddict">
+                    <span class="icon">📖</span>
+                    <span class="label">ID Dictionary</span>
+                </button>
+            </div>
+
+            <div class="user-status">
+                <div class="level-badge">LV.<span id="current-level-label">1</span> <span
+                        id="current-level-name">Novice</span></div>
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 0%"></div>
+                </div>
+                <!-- Reset Button Moved Here -->
+                <button onclick="app.resetState()" class="reset-btn">
+                    🗑️ データをリセット
+                </button>
+            </div>
+        </nav>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+
+            <!-- SECTION: LEARNING MAP -->
+            <section id="map" class="view-section active">
+                <header class="section-header">
+                    <h2>Project: Legend RPG</h2>
+                    <p>ゼロから始める、最強のMMORPGサーバー開発ログ。全レベルをクリアしてサーバーを完成させよう。</p>
+                </header>
+
+                <div class="map-container" id="map-container">
+                    <!-- Level 1 -->
+                    <div class="map-node unlocked" onclick="app.openLevel(1)">
+                        <div class="node-icon">🌱</div>
+                        <div class="node-info">
+                            <h3>Level 1: Novice</h3>
+                            <p>世界の理（ことわり）を操る</p>
+                            <span class="tags">/time, /weather, /difficulty</span>
+                        </div>
+                    </div>
+
+                    <div class="map-connector"></div>
+
+                    <!-- Level 2 -->
+                    <div class="map-node locked" onclick="app.openLevel(2)">
+                        <div class="node-icon">🧭</div>
+                        <div class="node-info">
+                            <h3>Level 2: Apprentice</h3>
+                            <p>対象の特定と移動</p>
+                            <span class="tags">Selectors, /tp, /give</span>
+                        </div>
+                    </div>
+
+                    <div class="map-connector"></div>
+
+                    <!-- Level 3 -->
+                    <div class="map-node locked" onclick="app.openLevel(3)">
+                        <div class="node-icon">📊</div>
+                        <div class="node-info">
+                            <h3>Level 3: Logic User</h3>
+                            <p>変数と計算の概念</p>
+                            <span class="tags">/scoreboard, /tag</span>
+                        </div>
+                    </div>
+
+                    <div class="map-connector"></div>
+
+                    <!-- Level 4 -->
+                    <div class="map-node locked" onclick="app.openLevel(4)">
+                        <div class="node-icon">⚙️</div>
+                        <div class="node-info">
+                            <h3>Level 4: Engineer</h3>
+                            <p>自動化と連携</p>
+                            <span class="tags">Chain, Repeat, Conditional</span>
+                        </div>
+                    </div>
+
+                    <div class="map-connector"></div>
+
+                    <!-- Level 5 -->
+                    <div class="map-node locked" onclick="app.openLevel(5)">
+                        <div class="node-icon">🧙‍♂️</div>
+                        <div class="node-info">
+                            <h3>Level 5: Wizard</h3>
+                            <p>究極のシステム構築</p>
+                            <span class="tags">/execute, /data, NBT</span>
+                        </div>
+                    </div>
+
+                    <div class="map-connector"></div>
+
+                    <!-- Level 6 -->
+                    <div class="map-node locked" onclick="app.openLevel(6)">
+                        <div class="node-icon">🏗️</div>
+                        <div class="node-info">
+                            <h3>Level 6: Architect</h3>
+                            <p>外部ファイルの活用</p>
+                            <span class="tags">Datapacks, Functions, Tags</span>
+                        </div>
+                    </div>
+
+                    <div class="map-connector"></div>
+
+                    <!-- Level 7 -->
+                    <div class="map-node locked" onclick="app.openLevel(7)">
+                        <div class="node-icon">👑</div>
+                        <div class="node-info">
+                            <h3>Level 7: Grandmaster</h3>
+                            <p>マクロと最適化</p>
+                            <span class="tags">Macros, Optimization, NMS</span>
+                        </div>
+                    </div>
+
+                    <div class="map-connector"></div>
+
+                    <!-- Level 8 -->
+                    <div class="map-node locked" onclick="app.openLevel(8)">
+                        <div class="node-icon">🌌</div>
+                        <div class="node-info">
+                            <h3>Level 8: Game Master</h3>
+                            <p>サーバー管理と神の権限</p>
+                            <span class="tags">Admin, Server Properties</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Level Modal -->
+                <div id="level-modal" class="modal hidden">
+                    <div class="modal-content level-modal-content">
+                        <span class="close-btn" onclick="app.closeModal()">&times;</span>
+                        <div id="level-content-area"></div>
+                    </div>
+                </div>
+
+                <!-- V11 Exam Modal -->
+                <div id="exam-modal" class="modal hidden">
+                    <div class="modal-content exam-modal-content">
+                        <span class="close-btn" onclick="app.closeExamModal()">&times;</span>
+                        <h2 style="color: #ffcc00; text-align: center; margin-bottom: 20px;">🎓 昇格試験 (Certification
+                            Exam)</h2>
+                        <p style="text-align: center; color: #ccc; margin-bottom: 30px;">全問正解で次のレベルへ進めます。</p>
+                        <div id="exam-questions">
+                            <!-- Questions injected here -->
+                        </div>
+                        <div style="text-align: center; margin-top: 30px;">
+                            <button class="primary-btn" onclick="app.checkExam()">採点する (Submit)</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- V11 Certificate Overlay (Hidden by default) -->
+                <div id="certificate-overlay" class="hidden">
+                    <div class="cert-content">
+                        <h1>合格 (PASSED)</h1>
+                        <div class="cert-stars">⭐⭐⭐</div>
+                        <p>Level Up!</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: WORKSHOP -->
+            <section id="workshop" class="view-section">
+                <header class="section-header">
+                    <h2>Workshop</h2>
+                    <p>実践的なシステムを作ってみよう。レシピを選んでください。</p>
+                </header>
+                <div class="workshop-grid" id="workshop-container">
+                    <!-- Javascript will populate this -->
+                </div>
+                <div id="workshop-area" class="hidden">
+                    <!-- Workshop Interactive Area -->
+                </div>
+            </section>
+
+            <!-- SECTION: REFERENCE -->
+            <section id="reference" class="view-section">
+                <header class="section-header">
+                    <h2>Command Matrix</h2>
+                    <div class="search-bar">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="cmd-search" placeholder="コマンドを検索 (例: kill, ターゲット...)"
+                            oninput="app.searchCommands()">
+                    </div>
+                </header>
+                <div class="cmd-list-container" id="cmd-list">
+                    <!-- Populated by JS -->
+                </div>
+            </section>
+
+            <!-- SECTION: TOOLS -->
+            <section id="tools" class="view-section">
+                <header class="section-header">
+                    <h2>Utility Tools</h2>
+                    <p>複雑な引数を生成するための補助ツール</p>
+                </header>
+                <div class="tools-grid">
+                    <div class="tool-card">
+                        <h3>🎨 テキスト装飾 (JSON Text)</h3>
+                        <p>/tellraw や /title で使う色付き文字を生成。</p>
+                        <button class="launch-btn" onclick="app.openTool('json')">Launch</button>
+                    </div>
+                    <div class="tool-card">
+                        <h3>🧪 ポーション効果生成</h3>
+                        <p>/effect コマンドのduration/amplifier計算。</p>
+                        <button class="launch-btn" onclick="app.openTool('potion')">Launch</button>
+                    </div>
+                    <div class="tool-card">
+                        <h3>🪧 看板ジェネレーター</h3>
+                        <p>右クリックでコマンドが起動する看板を作成。</p>
+                        <button class="launch-btn" onclick="app.openTool('sign')">Launch</button>
+                    </div>
+                    <div class="tool-card">
+                        <h3>🌈 カラーコード (Color)</h3>
+                        <p>§a, §b などの装飾コードと色の確認。</p>
+                        <button class="launch-btn" onclick="app.openTool('color')">Launch</button>
+                    </div>
+                    <div class="tool-card">
+                        <h3>⚔️ 最強装備作成 (Item)</h3>
+                        <p>名前、説明、エンチャント付きアイテムを生成。</p>
+                        <button class="launch-btn" onclick="app.openTool('item')">Launch</button>
+                    </div>
+                    <div class="tool-card">
+                        <h3>🆔 UUID生成 (UUID)</h3>
+                        <p>ランダムなUUIDを生成します。</p>
+                        <button class="launch-btn" onclick="app.openTool('uuid')">Launch</button>
+                    </div>
+                </div>
+
+                <!-- Tool Modal -->
+                <div id="tool-modal" class="modal-overlay hidden">
+                    <div class="modal-content tool-modal-content">
+                        <button class="close-modal" onclick="app.closeTool()">×</button>
+                        <div id="tool-content-area"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION: ID DICTIONARY (V5 Upgrade) -->
+            <section id="iddict" class="view-section">
+                <header class="section-header">
+                    <h1>📚 ID辞書 <span class="subtitle">マインクラフト ID データベース</span></h1>
+                </header>
+                <div class="id-list-container full-page">
+                    <div class="id-tabs">
+                        <button class="id-tab active" onclick="app.switchIdTab('items')">アイテム</button>
+                        <button class="id-tab" onclick="app.switchIdTab('entities')">エンティティ</button>
+                        <button class="id-tab" onclick="app.switchIdTab('enchants')">エンチャント</button>
+                        <button class="id-tab" onclick="app.switchIdTab('effects')">エフェクト</button>
+                        <button class="id-tab" onclick="app.switchIdTab('particles')">パーティクル</button>
+                    </div>
+                    <div class="id-search-box">
+                        <span class="search-icon">🔍</span>
+                        <input type="text" id="id-search" class="glass-input big-search" placeholder="ID、日本語名、英語名で検索..."
+                            oninput="app.searchIds()">
+                    </div>
+                    <div class="id-scroll-area" id="id-list-content">
+                        <!-- filled by js -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- V5: Interactive Workshop Overlay (Full Screen) -->
+            <div id="workshop-overlay" class="workshop-overlay hidden">
+                <div class="overlay-header">
+                    <h2 id="ws-title">Workshop Title</h2>
+                    <div class="progress-track">
+                        <div id="ws-progress" class="progress-bar"></div>
+                    </div>
+                    <button class="close-btn-overlay" onclick="app.closeWorkshop()">✕</button>
+                </div>
+                <div id="ws-content" class="overlay-body">
+                    <!-- Dynamic Content -->
+                </div>
+                <div class="overlay-footer">
+                    <button id="btn-prev" class="nav-btn" onclick="app.prevStep()">← Prev</button>
+                    <span id="step-count">Step 1/5</span>
+                    <button id="btn-next" class="nav-btn primary" onclick="app.nextStep()">Next →</button>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <!-- V10.3 Reset Button -->
+
+
+    <script src="script.js"></script>
+</body>
+
+</html>
